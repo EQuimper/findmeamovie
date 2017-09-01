@@ -9,20 +9,29 @@ import FeedSmallCard from '../components/FeedSmallCard';
 const data = [
   {
     title: 'Wonder Woman',
-    imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BNDFmZjgyMTEtYTk5MC00NmY0LWJhZjktOWY2MzI5YjkzODNlXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg',
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/M/MV5BNDFmZjgyMTEtYTk5MC00NmY0LWJhZjktOWY2MzI5YjkzODNlXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg',
     categories: ['Action', 'Adventure'],
+    action: 'Currently Watching',
+    watchLater: true,
     id: 1,
   },
   {
     title: 'Annabelle: Creation',
-    imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MzIwMjMxNF5BMl5BanBnXkFtZTgwMDQ3NTc2MjI@._V1_UX182_CR0,0,182,268_AL_.jpg',
+    action: 'Want to watch later',
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MzIwMjMxNF5BMl5BanBnXkFtZTgwMDQ3NTc2MjI@._V1_UX182_CR0,0,182,268_AL_.jpg',
     categories: ['Horror'],
+    watchLater: false,
     id: 2,
   },
   {
     title: 'Spider-Man: Homecoming',
+    action: 'Just finished',
     categories: ['Action', 'Adventure'],
-    imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_UX128_CR0,0,128,190_AL_.jpg',
+    imageUrl:
+      'https://images-na.ssl-images-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_UX128_CR0,0,128,190_AL_.jpg',
+    watchLater: true,
     id: 3,
   },
 ];
@@ -32,7 +41,12 @@ class FeedScreen extends Component {
 
   _renderItem = ({ item, index }: { item: Object, index: number }) => {
     if (index === 0) {
-      return <Text style={styles.subtitle}>Feeds</Text>;
+      return (
+        <View>
+          <Text style={styles.subtitle}>Feeds</Text>
+          <FeedCard {...item} />
+        </View>
+      );
     }
 
     return <FeedCard {...item} />;
