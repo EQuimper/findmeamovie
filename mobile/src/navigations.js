@@ -5,9 +5,11 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { View, StyleSheet } from 'react-native';
 
 import FeedScreen from './screens/FeedScreen';
+import { colors } from './utils/constants';
 
 const Tabs = TabNavigator({
   FeedScreen: {
@@ -18,21 +20,37 @@ const Tabs = TabNavigator({
       )
     }
   },
-  MovieSwipingScreen: {
+  InCinema: {
     screen: FeedScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
+        <MaterialCommunityIcons name="run-fast" color={tintColor} size={30}  />
+      )
+    }
+  },
+  MovieSwipingScreen: {
+    screen: FeedScreen,
+    navigationOptions: {
+      tabBarIcon: () => (
         <View style={styles.cardButton}>
-          <MaterialCommunityIcons name="cards" color={tintColor} size={30}  />
+          <MaterialCommunityIcons name="cards" color="#fff" size={30}  />
         </View>
       )
     }
   },
-  SettingsScreen: {
+  ToWatchScreen: {
     screen: FeedScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-settings" color={tintColor} size={30}  />
+        <MaterialIcons name="tv" color={tintColor} size={30}  />
+      )
+    }
+  },
+  ProfileScreen: {
+    screen: FeedScreen,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <EvilIcons name="user" color={tintColor} size={40}  />
       )
     }
   }
@@ -43,11 +61,11 @@ const Tabs = TabNavigator({
   tabBarOptions: {
     showIcon: true,
     showLabel: false,
-    activeTintColor: '#000',
-    inactiveTintColor: 'red',
+    activeTintColor: colors.red,
+    inactiveTintColor: '#A29B9C',
     style: {
       backgroundColor: '#fff',
-      height: 45
+      height: 50
     }
   }
 })
@@ -56,12 +74,12 @@ export const AppNavigator = StackNavigator({
   FeedScreen: {
     screen: Tabs,
     navigationOptions: {
-      headerTitle: 'Home',
+      headerTitle: 'FindMeAMovie',
     }
   }
 }, {
   cardStyle: {
-    backgroundColor: '#fff'
+    // backgroundColor: '#fff'
   },
   navigationOptions: {
     headerStyle: {
@@ -76,10 +94,17 @@ const styles = StyleSheet.create({
     width: 50,
     marginBottom: 30,
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.red,
     justifyContent: 'center',
     borderRadius: 25,
-    borderColor: '#000',
-    borderWidth: 3
+    borderColor: colors.red,
+    borderWidth: 3,
+    shadowOffset: {
+      width: 1,
+      height: 0
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowColor: '#000'
   }
 })

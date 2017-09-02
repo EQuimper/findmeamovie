@@ -15,18 +15,11 @@ const fakeUrl = 'https://pbs.twimg.com/profile_images/835144746217664515/oxBgzjR
 export default function FeedCard({ imageUrl, title, action }: Props) {
   return (
     <View style={styles.root}>
-      <Image style={[styles.image, { borderRadius: 14 }]} source={{ uri: imageUrl }} />
-      <View style={styles.wrapper}>
-        <View style={styles.topWrapper}>
-          <View style={styles.avatar}>
-            <Image style={[styles.image, { borderRadius: 25 }]} source={{ uri: fakeUrl }} />
-          </View>
-          <Text style={styles.actionText}>{action}</Text>
-        </View>
-        <View style={styles.contentWrapper}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
+      <View style={styles.topWrapper}>
+        <Image source={{ uri: fakeUrl }} style={styles.avatar} />
+        <Text style={styles.userName}>EQuimper</Text>
       </View>
+      <Image style={styles.image} source={{ uri: imageUrl }} />
     </View>
   )
 }
@@ -34,19 +27,12 @@ export default function FeedCard({ imageUrl, title, action }: Props) {
 const styles = StyleSheet.create({
   root: {
     position: 'relative',
-    marginTop: 30,
-    height: 412,
-    width: 335,
-    backgroundColor: 'rgba(216, 216, 216, 45)',
+    marginTop: 20,
+    paddingHorizontal: 10,
+    height: 400,
+    width: '100%',
+    backgroundColor: '#fff',
     alignSelf: 'center',
-    borderRadius: 14,
-    shadowColor: '#000',
-    shadowOpacity: 0.14,
-    shadowRadius: 16,
-    shadowOffset: {
-      width: 0,
-      height: 16
-    }
   },
   image: {
     flex: 1,
@@ -64,7 +50,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   topWrapper: {
-    flex: 0.2,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -85,9 +71,11 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   avatar: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    backgroundColor: '#fff',
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+  },
+  userName: {
+    marginLeft: 5
   }
 })

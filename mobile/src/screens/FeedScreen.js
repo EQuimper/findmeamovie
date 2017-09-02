@@ -39,18 +39,7 @@ const data = [
 class FeedScreen extends Component {
   state = {};
 
-  _renderItem = ({ item, index }: { item: Object, index: number }) => {
-    if (index === 0) {
-      return (
-        <View>
-          <Text style={styles.subtitle}>Feeds</Text>
-          <FeedCard {...item} />
-        </View>
-      );
-    }
-
-    return <FeedCard {...item} />;
-  };
+  _renderItem = ({ item }: { item: Object }) => <FeedCard {...item} />;
 
   _renderHorizontalItem = ({ item }) => <FeedSmallCard {...item} />;
 
@@ -60,7 +49,6 @@ class FeedScreen extends Component {
         <FlatList
           ListHeaderComponent={() => (
             <View>
-              <Text style={styles.subtitle}>Recommandations</Text>
               <FlatList
                 data={data}
                 keyExtractor={({ id }) => id}
@@ -81,7 +69,6 @@ class FeedScreen extends Component {
 
 const styles = StyleSheet.create({
   root: {
-    marginTop: 10,
     flex: 1,
   },
   subtitle: {
@@ -89,8 +76,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   recommandationsList: {
-    height: 200,
-    marginTop: 10,
+    height: 160,
+    width: '100%',
   },
 });
 
